@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InterviewHelper", "InterviewHelper\InterviewHelper.csproj", "{59DD4394-5641-4236-8675-CCB44CA3D737}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{59DD4394-5641-4236-8675-CCB44CA3D737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59DD4394-5641-4236-8675-CCB44CA3D737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59DD4394-5641-4236-8675-CCB44CA3D737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59DD4394-5641-4236-8675-CCB44CA3D737}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {461F9BF9-173D-4781-859D-6C50DD0E1A8F}
+	EndGlobalSection
+EndGlobal

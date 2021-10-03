@@ -1,0 +1,13 @@
+﻿@page
+@model InterviewHelper.Pages.CreateIntervieweesModel
+@{
+}
+<h1>Add Interviewee</h1>
+
+<form method="post">
+    <input type="text" asp-for="Interviewee.Name" placeholder="Name"/>
+    <input type="text" asp-for="Interviewee.Surname" placeholder="Surname"/>
+    <input type="text" asp-for="Interviewee.Phone" placeholder="Phone"/>
+    <input type="text" asp-for="Interviewee.Score" placeholder="Score"/>
+    <button type="submit">Submit</button>
+</form>

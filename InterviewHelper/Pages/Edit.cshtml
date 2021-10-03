@@ -1,0 +1,144 @@
+﻿@page
+@model InterviewHelper.Pages.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Interviewee</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div id="error" class="text-danger"></div>
+        <form id="form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Interviewee.Id" />
+            <div class="form-group">
+                <label asp-for="Interviewee.Name" class="control-label"></label>
+                <input id="Name" asp-for="Interviewee.Name" class="form-control" />
+                <span asp-validation-for="Interviewee.Name" class="text-danger"></span>
+            </div>
+            <div id="errorName" class="text-danger"></div>
+            <div id="errorNameAZ" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Interviewee.Surname" class="control-label"></label>
+                <input id="Surname" asp-for="Interviewee.Surname" class="form-control" />
+                <span asp-validation-for="Interviewee.Surname" class="text-danger"></span>
+            </div>
+            <div id="errorSurname" class="text-danger"></div>
+            <div id="errorSurnameAZ" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Interviewee.Score" class="control-label"></label>
+                <input id="Score" asp-for="Interviewee.Score" class="form-control" />
+                <span asp-validation-for="Interviewee.Score" class="text-danger"></span>
+            </div>
+            <div id="errorScore" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Interviewee.Phone" class="control-label"></label>
+                <input id="Phone" asp-for="Interviewee.Phone" class="form-control" />
+                <span asp-validation-for="Interviewee.Phone" class="text-danger"></span>
+            </div>
+            <div id="errorPhone" class="text-danger"></div>
+            <div id="errorPhone09" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./ListInterviewees">Back to List</a>
+</div>
+
+
+<script>
+    const Name = document.getElementById('Name')
+    const Surname = document.getElementById('Surname')
+    const Score = document.getElementById('Score')
+    const Phone = document.getElementById('Phone')
+    const form = document.getElementById('form')
+    const errorName = document.getElementById('errorName')
+    const errorSurname = document.getElementById('errorSurname')
+    const errorScore = document.getElementById('errorScore')
+    const errorPhone = document.getElementById('errorPhone')
+
+
+    form.addEventListener('submit', (e) => {
+        let messages = []
+
+        if (Name.value === '' || Name.value == null) {
+            messages.push('The name is required.')
+            e.preventDefault()
+            errorName.innerText = messages;
+            messages = [];
+        } else {
+            errorName.innerText = '';
+        }
+
+        if (!/^[a-z]+$/i.test(Name.value) && Name.value !== '' && Name.value !== null) {
+            messages.push('\r\nThe name can only contain letters (a-z, A-Z)')
+            e.preventDefault()
+            errorNameAZ.innerText = messages;
+            messages = [];
+        } else {
+            errorNameAZ.innerText = '';
+        }
+
+        if (Surname.value === '' || Surname.value == null) {
+            messages.push('The surname is required.')
+            e.preventDefault()
+            errorSurname.innerText = messages;
+            messages = [];
+        } else {
+            errorSurname.innerText = '';
+        }
+
+        if (!/^[a-z]+$/i.test(Surname.value) && Surname.value !== '' && Surname.value !== null) {
+            messages.push('\r\nThe surname can only contain letters (a-z, A-Z)')
+            e.preventDefault()
+            errorSurnameAZ.innerText = messages;
+            messages = [];
+        } else {
+            errorSurnameAZ.innerText = '';
+        }
+
+        if (Score.value < 0) {
+            messages.push("The score can't be negative")
+            e.preventDefault()
+            errorScore.innerText = messages;
+            messages = [];
+        }
+
+        if (Score.value >10) {
+            messages.push("The score can't be higher than 10")
+            e.preventDefault()
+            errorScore.innerText = messages;
+            messages = [];
+        }
+
+        if (!/^\d+$/.test(Phone.value) && Phone.value !== '' && Phone.value !== null) {
+            e.preventDefault()
+            errorPhone09.innerText = 'The phone can only contain numbers (0-9)';
+        } else {
+            if (Phone.value.length !== 10) {
+                e.preventDefault()
+                errorPhone.innerText = 'The phone number must be 10 characters';
+            }
+            else {
+                errorPhone.innerText = '';
+            }
+            errorPhone09.innerText = '';
+        }
+
+        if (messages.length > 0) {
+            e.preventDefault()
+        }
+    })
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
